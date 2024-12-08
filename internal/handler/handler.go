@@ -1,10 +1,14 @@
 package handler
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/pelicanch1k/EffectiveMobileTestTask/internal/service"
 	"github.com/pelicanch1k/EffectiveMobileTestTask/pkg/logging"
 
-	"github.com/gin-gonic/gin"
+	"github.com/swaggo/files"
+	"github.com/swaggo/gin-swagger"
+
+	_ "github.com/pelicanch1k/EffectiveMobileTestTask/docs"
 )
 
 type Handler struct {
@@ -21,6 +25,8 @@ func NewHandler(services *service.Service, logger *logging.Logger) *Handler {
 
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	songs := router.Group("/api/v1")
 	{

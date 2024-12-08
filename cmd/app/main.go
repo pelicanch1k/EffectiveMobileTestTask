@@ -15,6 +15,12 @@ import (
 	"syscall"
 )
 
+// @title Song API
+// @version 1.0
+// @description API Server for EffectiveMobileTestTask
+
+// @host localhost:80
+// @BasePath /api/v1/
 func main() {
 	// TODO: init logger
 	logger := logging.GetLogger()
