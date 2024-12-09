@@ -31,10 +31,12 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	songs := router.Group("/api/v1")
 	{
 		songs.GET("/songs", h.getSongs)
-		songs.GET("/songs/:id/lyrics", h.getSongLyrics)
-		songs.DELETE("/songs/:id", h.deleteSong)
+		songs.GET("/song/:id/lyrics", h.getSongLyrics)
 
-		songs.PUT("/songs", h.updateSong)
+		songs.DELETE("/song/:id", h.deleteSong)
+
+		songs.PUT("/song", h.updateSong)
+		songs.POST("/song")
 	}
 
 	return router
